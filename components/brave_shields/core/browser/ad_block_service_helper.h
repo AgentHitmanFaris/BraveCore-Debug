@@ -11,6 +11,15 @@
 
 namespace brave_shields {
 
+/**
+ * @brief Merges a CSP directive into another if both exist.
+ *
+ * This function handles the logic for combining Content Security Policy directives,
+ * which usually involves comma separation for distinct policies.
+ *
+ * @param from The CSP directive string to merge from.
+ * @param into A pointer to the optional string where the directive will be merged into.
+ */
 void MergeCspDirectiveInto(std::optional<std::string> from,
                            std::optional<std::string>* into);
 

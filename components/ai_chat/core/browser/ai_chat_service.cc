@@ -66,6 +66,12 @@ namespace {
 constexpr base::FilePath::StringViewType kDBFileName =
     FILE_PATH_LITERAL("AIChat");
 
+/**
+ * @brief Sorts conversations by their updated time in descending order.
+ *
+ * @param conversations_map The map of conversations.
+ * @return A vector of pointers to sorted conversations.
+ */
 std::vector<mojom::Conversation*> GetConversationsSortedByUpdatedTime(
     std::map<std::string, mojom::ConversationPtr, std::less<>>&
         conversations_map) {
@@ -79,6 +85,14 @@ std::vector<mojom::Conversation*> GetConversationsSortedByUpdatedTime(
   return conversations;
 }
 
+/**
+ * @brief Checks if a conversation's update time is within a specified range.
+ *
+ * @param begin_time The start of the range (inclusive).
+ * @param end_time The end of the range (inclusive).
+ * @param conversation The conversation to check.
+ * @return True if the conversation is within the range, false otherwise.
+ */
 bool IsConversationUpdatedTimeWithinRange(
     std::optional<base::Time> begin_time,
     std::optional<base::Time> end_time,
@@ -89,6 +103,12 @@ bool IsConversationUpdatedTimeWithinRange(
            conversation->updated_time <= end_time));
 }
 
+/**
+ * @brief Clones a vector of associated content.
+ *
+ * @param associated_content The content to clone.
+ * @return A cloned vector of associated content.
+ */
 std::vector<mojom::AssociatedContentPtr> CloneAssociatedContent(
     const std::vector<mojom::AssociatedContentPtr>& associated_content) {
   std::vector<mojom::AssociatedContentPtr> cloned_content;
